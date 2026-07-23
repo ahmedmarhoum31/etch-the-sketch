@@ -1,24 +1,12 @@
 
 const container = document.querySelector(".grid-container");
-// gridSize will contain how many grid elements we want, so maximumGridSize calculate the size to give to each element
-let gridSize = 16;
-let maximumGridSize = String(64/16)+"vh";
-
-//this for loop will create 16 div container, in which each container will have 16 divs inside of them
-for(let i=0;i<16;i++)
+const changeSizeButton = document.querySelector(".select-grid-number");
+const gridSizeText = document.querySelector(".grid-number");
+settingTheGrid(16);
+changeSizeButton.addEventListener("click",()=>
 {
-    let newDivContainer = document.createElement("div");
-    newDivContainer.classList.add("make-container-flex");
-    container.appendChild(newDivContainer);
-    for(let j = 0; j<16; j++)
-    {
-       let gridElement = document.createElement("div");
-       gridElement.classList.add("grid-element");
-       gridElement.style.height = maximumGridSize;
-       gridElement.style.aspectRatio ="1/1";
-       newDivContainer.appendChild(gridElement);
-    }
-}
+    settingTheGrid(getUserInput());
+})
 
 // this function will get the user input
 function getUserInput()
@@ -26,6 +14,13 @@ function getUserInput()
     return Number(prompt("please enter the grid number you want! (between 1 and 100)"));
 }
 
+function randomizeColor()
+{
+    let red = Math.random()*256;
+    let green = Math.random()*256;
+    let blue = Math.random()*256;
+    return `rgb(${red},${green},${blue})`;
+}
 
 // this function will delete the old grid, and set new one based on the userInput (implementation of grid same logic as in the beginning of script)
 function settingTheGrid(userInput)
@@ -62,19 +57,22 @@ function settingTheGrid(userInput)
 
         gridElements.forEach(element => element.addEventListener("mouseenter",()=>
         {
-            element.style.backgroundColor = "black";
+            if(element.style.backgroundColor ==="")
+            {
+                element.style.backgroundColor = randomizeColor();
+                element.style.opacity = "0.1";
+            }
+            if(element.style.opacity !== "1")
+            {
+                element.style.opacity = String(Number(element.style.opacity) +0.1);
+            }
+            
 
         }))
         
     }
 }
 
-const changeSizeButton = document.querySelector(".select-grid-number");
-const gridSizeText = document.querySelector(".grid-number");
 
-changeSizeButton.addEventListener("click",()=>
-{
-    settingTheGrid(getUserInput());
-})
 
 
