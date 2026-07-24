@@ -29,47 +29,46 @@ function settingTheGrid(userInput)
     {
         return prompt("maximum greed number is 100!");
 
-    }else
-    {
-        gridSizeText.textContent = "current grid size = " + userInput;
-        //removing previous Grid
-        let existingGridElements = document.querySelectorAll(".make-container-flex");
-        existingGridElements.forEach(div=> div.remove());
-
-        //calculating Grid size based on grid number
-        let maximumGridSize = String(64.1/userInput)+"vh";
-
-        for(let i = 0; i<userInput; i++)
-        {
-            let newDivContainer = document.createElement("div");
-            newDivContainer.classList.add("make-container-flex");
-            container.appendChild(newDivContainer);
-            for(j = 0; j<userInput; j++)
-            {
-                let gridElement = document.createElement("div");
-                gridElement.classList.add("grid-element");
-                gridElement.style.height = maximumGridSize;
-                gridElement.style.aspectRatio ="1/1";
-                newDivContainer.appendChild(gridElement);
-            }
-        }
-        const gridElements = document.querySelectorAll(".grid-element");
-        
-        container.addEventListener("pointermove",(event)=>
-        {
-            if(!event.target.matches(".grid-element")) return;
-            if(event.target.style.backgroundColor ==="")
-            {
-                event.target.style.backgroundColor = randomizeColor();
-                event.target.style.opacity = "0.1";
-            }
-            if(event.target.style.opacity !== "1")
-            {
-                event.target.style.opacity = String(Number(event.target.style.opacity) +0.1);
-            }
-        })
-        
     }
+    gridSizeText.textContent = "current grid size = " + userInput;
+    //removing previous Grid
+    let existingGridElements = document.querySelectorAll(".make-container-flex");
+    existingGridElements.forEach(div=> div.remove());
+
+    //calculating Grid size based on grid number
+    let maximumGridSize = String(64.1/userInput)+"vh";
+
+    for(let i = 0; i<userInput; i++)
+    {
+        let newDivContainer = document.createElement("div");
+        newDivContainer.classList.add("make-container-flex");
+        container.appendChild(newDivContainer);
+        for(j = 0; j<userInput; j++)
+        {
+            let gridElement = document.createElement("div");
+            gridElement.classList.add("grid-element");
+            gridElement.style.height = maximumGridSize;
+            gridElement.style.aspectRatio ="1/1";
+            newDivContainer.appendChild(gridElement);
+        }
+    }
+    const gridElements = document.querySelectorAll(".grid-element");
+        
+    container.addEventListener("pointermove",(event)=>
+    {
+        if(!event.target.matches(".grid-element")) return;
+        if(event.target.style.backgroundColor ==="")
+        {
+            event.target.style.backgroundColor = randomizeColor();
+            event.target.style.opacity = "0.1";
+        }
+        if(event.target.style.opacity !== "1")
+        {
+            event.target.style.opacity = String(Number(event.target.style.opacity) +0.1);
+        }
+    })
+        
+    
 }
 
 
