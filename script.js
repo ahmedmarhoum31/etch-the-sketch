@@ -27,7 +27,7 @@ function settingTheGrid(userInput)
 {
     if(userInput>=100)
     {
-        prompt("maximum greed number is 100!");
+        return prompt("maximum greed number is 100!");
 
     }else
     {
@@ -54,21 +54,20 @@ function settingTheGrid(userInput)
             }
         }
         const gridElements = document.querySelectorAll(".grid-element");
-
-        gridElements.forEach(element => element.addEventListener("mouseenter",()=>
+        
+        container.addEventListener("pointermove",(event)=>
         {
-            if(element.style.backgroundColor ==="")
+            if(!event.target.matches(".grid-element")) return;
+            if(event.target.style.backgroundColor ==="")
             {
-                element.style.backgroundColor = randomizeColor();
-                element.style.opacity = "0.1";
+                event.target.style.backgroundColor = randomizeColor();
+                event.target.style.opacity = "0.1";
             }
-            if(element.style.opacity !== "1")
+            if(event.target.style.opacity !== "1")
             {
-                element.style.opacity = String(Number(element.style.opacity) +0.1);
+                event.target.style.opacity = String(Number(event.target.style.opacity) +0.1);
             }
-            
-
-        }))
+        })
         
     }
 }
