@@ -91,13 +91,13 @@ function settingTheGrid(userInput)
     container.addEventListener("touchmove",(event)=>
         {
             event.preventDefault();
-            console.log(event.changedTouches)
+            
             const touchLocation = event.changedTouches[0];
             const currentTarget = document.elementFromPoint(touchLocation.clientX, touchLocation.clientY);
             changeGridCell(currentTarget);
             
             
-        })
+        }, {passive: false});
     
 
        
