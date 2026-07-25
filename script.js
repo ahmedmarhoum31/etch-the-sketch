@@ -36,7 +36,12 @@ function settingTheGrid(userInput)
     existingGridElements.forEach(div=> div.remove());
 
     //calculating Grid size based on grid number
-    let maximumGridSize = String(64.1/userInput)+"vh";
+   
+    let maximumGridSize = String(60.1/userInput)+"vh";
+    if(window.innerWidth <=720)
+    {
+         maximumGridSize = String(100/userInput)+"vw";
+    }
 
     for(let i = 0; i<userInput; i++)
     {
@@ -47,7 +52,14 @@ function settingTheGrid(userInput)
         {
             let gridElement = document.createElement("div");
             gridElement.classList.add("grid-element");
-            gridElement.style.height = maximumGridSize;
+            if(window.innerWidth <=720)
+            {
+                gridElement.style.width = maximumGridSize;
+            }else
+            {
+                gridElement.style.height = maximumGridSize;
+            }
+            
             gridElement.style.aspectRatio ="1/1";
             newDivContainer.appendChild(gridElement);
         }
