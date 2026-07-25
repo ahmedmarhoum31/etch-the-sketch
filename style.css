@@ -6,13 +6,24 @@
     padding: 0;
 }
 
+body
+    {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: space-between;
+        width: 100vw;
+    }
+
 main
 {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    height: 14vh;
+    height: auto ;
+    padding: 20px;
     background-color: black;
+    
 }
 
 main h1
@@ -85,7 +96,8 @@ main div button:hover
 
 footer
 {
-    height: 14vh;
+    height: auto;
+    padding: 20px;
 
     background-color: black;
     display: flex;
@@ -100,4 +112,43 @@ footer p
     font-weight: 600;
     color: white;
     
+}
+
+@media(max-width: 720px) {
+
+    
+    main
+    {
+        flex-direction: column;
+        justify-content: center;
+        padding: 0;
+        height: auto;
+        padding: 10px;
+    }
+    main h1
+    {
+        font-size: 18px;
+
+    }
+
+    main div p
+    {
+        font-size: 16px;
+    }
+    main div button
+    {
+        font-size: 16px;
+        padding: 5px 10px;
+    }
+
+    footer
+    {
+        height: auto;
+        padding: 10px;
+    }
+
+    footer p 
+    {
+        font-size: 16px;
+    }
 }
