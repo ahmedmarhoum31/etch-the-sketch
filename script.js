@@ -24,11 +24,11 @@ function randomizeColor()
 
 function changeGridCell(cellElement)
 {
-    if(!cellElement.matches(".grid-element")) return;
+    if(!cellElement || !cellElement.matches(".grid-element")) return;
     if(!cellElement.style.backgroundColor)
     {
         cellElement.style.backgroundColor = randomizeColor();
-        cellElement.style.backgroundColor = "0.1";
+        cellElement.style.opacity = "0.1";
     }
     if(cellElement.style.opacity !== "1")
     {
