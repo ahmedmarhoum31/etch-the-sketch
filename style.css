@@ -12,7 +12,7 @@ body
         flex-direction: column;
         height: 100vh;
         justify-content: space-between;
-        width: 100vw;
+  
     }
 
 main
@@ -124,6 +124,7 @@ footer p
         padding: 0;
         height: auto;
         padding: 10px;
+        width: 100vw !important;
     }
     main h1
     {
@@ -145,6 +146,7 @@ footer p
     {
         height: auto;
         padding: 10px;
+        width: 100vw !important;
     }
 
     footer p 

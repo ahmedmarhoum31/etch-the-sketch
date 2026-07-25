@@ -37,10 +37,13 @@ function settingTheGrid(userInput)
 
     //calculating Grid size based on grid number
    
-    let maximumGridSize = String(60.1/userInput)+"vh";
+    let maximumGridSize;
     if(window.innerWidth <=720)
     {
          maximumGridSize = String(100/userInput)+"vw";
+    }else
+    {
+        maximumGridSize = String(60.1/userInput)+"vh";
     }
 
     for(let i = 0; i<userInput; i++)
