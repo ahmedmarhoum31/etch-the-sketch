@@ -22,6 +22,20 @@ function randomizeColor()
     return `rgb(${red},${green},${blue})`;
 }
 
+function changeGridCell(cellElement)
+{
+    if(!cellElement.matches(".grid-element")) return;
+    if(!cellElement.style.backgroundColor)
+    {
+        cellElement.style.backgroundColor = randomizeColor();
+        cellElement.style.backgroundColor = "0.1";
+    }
+    if(cellElement.style.opacity !== "1")
+    {
+        cellElement.style.opacity = String(Number(cellElement.style.opacity)+0.1);
+    }
+}
+
 // this function will delete the old grid, and set new one based on the userInput (implementation of grid same logic as in the beginning of script)
 function settingTheGrid(userInput)
 {
@@ -69,19 +83,25 @@ function settingTheGrid(userInput)
     }
     const gridElements = document.querySelectorAll(".grid-element");
         
-    container.addEventListener("pointermove",(event)=>
+    container.addEventListener("mousemove",(event)=>
     {
-        if(!event.target.matches(".grid-element")) return;
-        if(event.target.style.backgroundColor ==="")
-        {
-            event.target.style.backgroundColor = randomizeColor();
-            event.target.style.opacity = "0.1";
-        }
-        if(event.target.style.opacity !== "1")
-        {
-            event.target.style.opacity = String(Number(event.target.style.opacity) +0.1);
-        }
+        changeGridCell(event.target);
     })
+
+    container.addEventListener("touchmove",(event)=>
+        {
+            console.log(event.changedTouches)
+            const touchLocation = event.changedTouches[0];
+            const currentTarget = document.elementFromPoint(touchLocation.clientX, touchLocation.clientY);
+            changeGridCell(currentTarget);
+            
+            
+        })
+    
+
+       
+    
+    
         
     
 }
